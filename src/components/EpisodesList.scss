@@ -1,0 +1,11 @@
+.movies {
+  &__list {
+    border-top: 1px solid salmon;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  &__item {
+    padding-top: 10px;
+  }
+}
