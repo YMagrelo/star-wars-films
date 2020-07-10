@@ -8,3 +8,9 @@ export const getFilmsDetails = filmId => fetch(`${BASE_URL}films/${filmId}`)
 
 export const getCharacter = charId => fetch(`${BASE_URL}people/${charId}`)
   .then(response => response.json());
+
+export const getPlanet = planetId => fetch(`${BASE_URL}planets/${planetId}`)
+  .then(response => response.json());
+
+export const getStarship = shipId => fetch(`${BASE_URL}starships/${shipId}`)
+  .then(response => response.json());

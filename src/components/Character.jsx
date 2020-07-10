@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { getCharacterThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
-import { filmsPropType } from '../propTypesConstant';
+import { characterPropType } from '../propTypesConstant';
 
 const Character = (props) => {
   const { character, getCharacter } = props;
@@ -119,4 +119,5 @@ Character.propTypes = {
       charId: PropTypes.string,
     }).isRequired,
   }).isRequired,
+  character: characterPropType.isRequired,
 };

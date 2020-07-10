@@ -55,9 +55,15 @@ const EpisodeDetails = (props) => {
           </ul>
           <ul className="content__item">
             <strong>Planets:</strong>
-            {details.planets.map(planet => (
-              <li key={planet}>{planet}</li>
-            ))}
+            {details.planets.map((planet) => {
+              const planetId = planet.slice(-2, -1);
+
+              return (
+                <NavLink to={`/planets/${planetId}`}>
+                  <li key={planet}>{planet}</li>
+                </NavLink>
+              );
+            })}
           </ul>
           <ul className="content__item">
             <strong>Starships:</strong>
