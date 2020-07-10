@@ -17,50 +17,62 @@ const EpisodeDetails = (props) => {
 
   return (
     <div className="details">
-      <NavLink to="/"><span>Back to home page</span></NavLink>
+      <NavLink to="/"><span>Home</span></NavLink>
       <h1 className="details__heading">Episode details</h1>
       {!details && <Preloader />}
       {details && (
         <div className="details__details-content content">
-          <h5 className="content__title">{`Title: ${details.title}`}</h5>
+          <h3 className="content__title">{details.title}</h3>
           <p className="content__item">
-            {`Opening crawl: ${details.opening_crawl}`}
+            <strong>Opening crawl: </strong>
+            {details.opening_crawl}
           </p>
           <p className="content__item">
-            {`Director: ${details.director}`}
+            <strong>Director: </strong>
+            {details.director}
           </p>
           <p className="content__item">
-            {`Producer: ${details.producer}`}
+            <strong>Producer: </strong>
+            {' '}
+            {details.producer}
           </p>
           <p className="content__item">
-            {`Release date: ${details.release_date}`}
+            <strong>Release date: </strong>
+            {' '}
+            {details.release_date}
           </p>
           <ul className="content__item">
-            Characters:
-            {details.characters.map(char => (
-              <li key={char}>{char}</li>
-            ))}
+            <strong>Characters:</strong>
+            {details.characters.map((char) => {
+              const charId = char.slice(-2, -1);
+
+              return (
+                <NavLink to={`/people/${charId}`}>
+                  <li key={char}>{char}</li>
+                </NavLink>
+              );
+            })}
           </ul>
           <ul className="content__item">
-            Planets:
+            <strong>Planets:</strong>
             {details.planets.map(planet => (
               <li key={planet}>{planet}</li>
             ))}
           </ul>
           <ul className="content__item">
-            Starships:
+            <strong>Starships:</strong>
             {details.starships.map(starship => (
               <li key={starship}>{starship}</li>
             ))}
           </ul>
           <ul className="content__item">
-            Vehicles:
+            <strong>Vehicles:</strong>
             {details.vehicles.map(vehicle => (
               <li key={vehicle}>{vehicle}</li>
             ))}
           </ul>
           <ul className="content__item">
-            Species:
+            <strong>Species:</strong>
             {details.species.map(specie => (
               <li key={specie}>{specie}</li>
             ))}

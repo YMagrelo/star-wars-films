@@ -19,6 +19,6 @@ export const filmsPropType = PropTypes.arrayOf(
   }).isRequired,
 );
 
-// export const filmsDetailsPropType = PropTypes.shape({
+// export const matchPropType = PropTypes.shape({
 
 // });

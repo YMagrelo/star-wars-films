@@ -1,13 +1,12 @@
 .episodes {
   height: 100vh;
-  background-color: rgba($color: #000000, $alpha: 0.2);
   padding: 20px 20px;
 
   &__heading {
     text-align: center;
     text-transform: uppercase;
     padding-bottom: 20px;
-    border-bottom: 1px solid salmon;
+    border-bottom: 1px solid red;
   }
 
   &__list {
