@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import './EpisodesList.scss';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getFilmsThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
+import { filmsPropType } from '../propTypesConstant';
 
 const EpisodesList = (props) => {
   const { films, getFilms } = props;
@@ -44,3 +46,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EpisodesList);
+
+EpisodesList.propTypes = {
+  getFilms: PropTypes.func.isRequired,
+  films: filmsPropType.isRequired,
+};

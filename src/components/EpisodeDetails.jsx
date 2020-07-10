@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import './EpisodeDetails.scss';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { getFilmDetailsThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
+import { filmsPropType } from '../propTypesConstant';
 
 const EpisodeDetails = (props) => {
   const { details, getFilmDetails } = props;
@@ -81,4 +83,16 @@ const mapDispatchToProps = dispatch => ({
 
 const EpisodeDetailsWithRouter = withRouter(EpisodeDetails);
 
-export default connect(mapStateToProps, mapDispatchToProps)(EpisodeDetailsWithRouter);
+export default connect(
+  mapStateToProps, mapDispatchToProps,
+)(EpisodeDetailsWithRouter);
+
+EpisodeDetails.propTypes = {
+  getFilmDetails: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      filmId: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  details: filmsPropType.isRequired,
+};

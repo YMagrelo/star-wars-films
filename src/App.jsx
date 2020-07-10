@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import EpisodesList from './components/EpisodesList';
 import EpisodeDetails from './components/EpisodeDetails';
 
-const App = props => (
+const App = () => (
   <div className="app-wrapper">
     <Route path="/" component={EpisodesList} exact />
     <Route path="/films/:filmId" component={EpisodeDetails} />
@@ -13,4 +13,3 @@ const App = props => (
 );
 
 export default App;
-
