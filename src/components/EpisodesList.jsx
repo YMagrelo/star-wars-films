@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import './EpisodesList.scss';
 import { connect } from 'react-redux';
-import { getFilmsThunk } from '../redux/reducer';
 import { NavLink } from 'react-router-dom';
+import { getFilmsThunk } from '../redux/reducer';
+import { Preloader } from './common/Preloader';
 
 const EpisodesList = (props) => {
   const { films, getFilms } = props;
@@ -14,6 +15,7 @@ const EpisodesList = (props) => {
   return (
     <div className="episodes">
       <h1 className="episodes__heading">The list of the star wars episodes</h1>
+      {!films.length && <Preloader />}
       <ul className="episodes__list">
         {films.map((film) => {
           const filmId = film.url.slice(-2, -1);
@@ -25,7 +27,6 @@ const EpisodesList = (props) => {
             >
 
               <NavLink to={`/films/${filmId}`}>{film.title}</NavLink>
-              {filmId}
             </li>
           );
         })}

@@ -3,6 +3,7 @@ import './EpisodeDetails.scss';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { getFilmDetailsThunk } from '../redux/reducer';
+import { Preloader } from './common/Preloader';
 
 const EpisodeDetails = (props) => {
   const { details, getFilmDetails } = props;
@@ -16,7 +17,7 @@ const EpisodeDetails = (props) => {
     <div className="details">
       <NavLink to="/"><span>Back to home page</span></NavLink>
       <h1 className="details__heading">Episode details</h1>
-
+      {!details && <Preloader />}
       {details && (
         <div className="details__details-content content">
           <h5 className="content__title">{`Title: ${details.title}`}</h5>
