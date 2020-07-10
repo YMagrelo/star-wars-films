@@ -1,31 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.scss';
 import './resets.scss';
-import { connect } from 'react-redux';
-import { getFilmsThunk } from './redux/reducer';
-import { EpisodesList } from './components/EpisodesList';
+import { Route } from 'react-router-dom';
+import EpisodesList from './components/EpisodesList';
+import EpisodeDetails from './components/EpisodeDetails';
 
-const App = (props) => {
-  const { films, getFilms } = props;
+const App = props => (
+  <div className="app-wrapper">
+    <Route path="/" component={EpisodesList} exact />
+    <Route path="/films/:filmId" component={EpisodeDetails} />
+  </div>
+);
 
-  useEffect(() => {
-    getFilms();
-  }, []);
+export default App;
 
-  return (
-    <div className="app-wrapper">
-      <h1 className="app-title">The list of the star wars episodes</h1>
-      <EpisodesList films={films} />
-    </div>
-  );
-};
-
-const mapStateToProps = state => ({
-  films: state.reducer.films,
-});
-
-const mapDispatchToProps = dispatch => ({
-  getFilms: () => dispatch(getFilmsThunk()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
