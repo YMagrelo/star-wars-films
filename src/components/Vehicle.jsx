@@ -2,88 +2,78 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { getStarshipThunk } from '../redux/reducer';
+import { getVehicleThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
-import { starshipsPropType } from '../propTypesConstant';
+import { vehiclePropType } from '../propTypesConstant';
 import { charUrlLength, filmsUrlLength } from '../constants';
 
-const Starship = (props) => {
-  const { starship, getStarship } = props;
-  const { starshipId } = props.match.params;
+const Vehicle = (props) => {
+  const { vehicle, getVehicle } = props;
+  const { vehicleId } = props.match.params;
 
   useEffect(() => {
-    getStarship(starshipId);
+    getVehicle(vehicleId);
   }, []);
 
   return (
     <div className="details">
       <NavLink to="/"><span>Home</span></NavLink>
       <h1 className="details__heading">Starship details</h1>
-      {!starship && <Preloader />}
-      {starship && (
+      {!vehicle && <Preloader />}
+      {vehicle && (
         <div className="details__content content">
-          <h3 className="content__title">{starship.name}</h3>
+          <h3 className="content__title">{vehicle.name}</h3>
           <p className="content__item">
             <strong>Model: </strong>
-            {starship.model}
+            {vehicle.model}
           </p>
           <p className="content__item">
             <strong>Manufacturer: </strong>
-            {starship.manufacturer}
+            {vehicle.manufacturer}
           </p>
           <p className="content__item">
             <strong>Cost in credits: </strong>
             {' '}
-            {starship.cost_in_credits}
+            {vehicle.cost_in_credits}
           </p>
           <p className="content__item">
             <strong>Length: </strong>
             {' '}
-            {starship.length}
+            {vehicle.length}
           </p>
           <p className="content__item">
             <strong>Max atmosphering speed: </strong>
             {' '}
-            {starship.max_atmosphering_speed}
+            {vehicle.max_atmosphering_speed}
           </p>
           <p className="content__item">
             <strong>Crew: </strong>
             {' '}
-            {starship.crew}
+            {vehicle.crew}
           </p>
           <p className="content__item">
             <strong>Passengers: </strong>
             {' '}
-            {starship.passengers}
+            {vehicle.passengers}
           </p>
           <p className="content__item">
             <strong>Cargo capacity: </strong>
             {' '}
-            {starship.cargo_capacity}
+            {vehicle.cargo_capacity}
           </p>
           <p className="content__item">
             <strong>Consumables: </strong>
             {' '}
-            {starship.consumables}
+            {vehicle.consumables}
           </p>
           <p className="content__item">
-            <strong>Hyperdrive rating: </strong>
+            <strong>Vehicle class: </strong>
             {' '}
-            {starship.hyperdrive_rating}
-          </p>
-          <p className="content__item">
-            <strong>MGLT: </strong>
-            {' '}
-            {starship.MGLT}
-          </p>
-          <p className="content__item">
-            <strong>Starship class: </strong>
-            {' '}
-            {starship.starship_class}
+            {vehicle.vehicle_class}
           </p>
           <ul className="content__item">
             <strong>Pilots:</strong>
-            {starship.pilots.map((pilot) => {
+            {vehicle.pilots.map((pilot) => {
               const charId = pilot.slice(charUrlLength, -1);
 
               return (
@@ -95,7 +85,7 @@ const Starship = (props) => {
           </ul>
           <ul className="content__item">
             <strong>Films:</strong>
-            {starship.films.map((film) => {
+            {vehicle.films.map((film) => {
               const filmId = film.slice(filmsUrlLength, -1);
 
               return (
@@ -114,29 +104,29 @@ const Starship = (props) => {
 };
 
 const mapStateToProps = state => ({
-  starship: state.starship,
+  vehicle: state.vehicle,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getStarship: starshipId => dispatch(getStarshipThunk(starshipId)),
+  getVehicle: vehicleId => dispatch(getVehicleThunk(vehicleId)),
 });
 
-const StarshipWithRouter = withRouter(Starship);
+const VehicleWithRouter = withRouter(Vehicle);
 
 export default connect(
   mapStateToProps, mapDispatchToProps,
-)(StarshipWithRouter);
+)(VehicleWithRouter);
 
-Starship.propTypes = {
-  getStarship: PropTypes.func.isRequired,
+Vehicle.propTypes = {
+  getVehicle: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      starshipId: PropTypes.string,
+      vehicleId: PropTypes.string,
     }).isRequired,
   }).isRequired,
-  starship: starshipsPropType,
+  vehicle: vehiclePropType,
 };
 
-Starship.defaultProps = {
-  starship: PropTypes.object,
+Vehicle.defaultProps = {
+  vehicle: PropTypes.object,
 };

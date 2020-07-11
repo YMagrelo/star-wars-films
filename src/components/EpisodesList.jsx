@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { getFilmsThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
 import { filmsPropType } from '../propTypesConstant';
+import { filmsUrlLength } from '../constants';
 
 const EpisodesList = (props) => {
   const { films, getFilms } = props;
@@ -20,7 +21,7 @@ const EpisodesList = (props) => {
       {!films.length && <Preloader />}
       <ul className="episodes__list">
         {films.map((film) => {
-          const filmId = film.url.slice(-2, -1);
+          const filmId = film.url.slice(filmsUrlLength, -1);
 
           return (
             <li

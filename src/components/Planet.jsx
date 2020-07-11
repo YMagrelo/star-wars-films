@@ -5,6 +5,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { getPlanetThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
 import { planetPropType } from '../propTypesConstant';
+import { charUrlLength, filmsUrlLength } from '../constants';
 
 const Planet = (props) => {
   const { planet, getPlanet } = props;
@@ -63,7 +64,7 @@ const Planet = (props) => {
           <ul className="content__item">
             <strong>Residents:</strong>
             {planet.residents.map((resident) => {
-              const charId = resident.slice(-2, -1);
+              const charId = resident.slice(charUrlLength, -1);
 
               return (
                 <NavLink to={`/people/${charId}`} key={resident}>
@@ -75,7 +76,7 @@ const Planet = (props) => {
           <ul className="content__item">
             <strong>Films:</strong>
             {planet.films.map((film) => {
-              const filmId = film.slice(-2, -1);
+              const filmId = film.slice(filmsUrlLength, -1);
 
               return (
                 <NavLink to={`/films/${filmId}`} key={film}>

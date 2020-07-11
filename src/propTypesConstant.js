@@ -92,3 +92,22 @@ export const starshipsPropType = PropTypes.shape({
   edited: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 });
+
+export const vehiclePropType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  model: PropTypes.string.isRequired,
+  manufacturer: PropTypes.string.isRequired,
+  cost_in_credits: PropTypes.string.isRequired,
+  length: PropTypes.string.isRequired,
+  max_atmosphering_speed: PropTypes.string.isRequired,
+  crew: PropTypes.string.isRequired,
+  passengers: PropTypes.string.isRequired,
+  cargo_capacity: PropTypes.string.isRequired,
+  consumables: PropTypes.string.isRequired,
+  vehicle_class: PropTypes.string.isRequired,
+  pilots: PropTypes.arrayOf(PropTypes.string).isRequired,
+  films: PropTypes.arrayOf(PropTypes.string).isRequired,
+  created: PropTypes.string.isRequired,
+  edited: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+});

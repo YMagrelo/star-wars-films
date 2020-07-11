@@ -4,13 +4,22 @@ import {
   getCharacter,
   getPlanet,
   getStarship,
+  getVehicle,
 } from '../api';
-
-const GET_FILMS = 'GET_FILMS';
-const GET_FILM_DETAILS = 'GET_FILM_DETAILS';
-const GET_CHARACTER = 'GET_CHARACTER';
-const GET_PLANET = 'GET_PLANET';
-const GET_STARSHIP = 'GET_STARSHIP';
+import {
+  GET_FILMS,
+  GET_FILM_DETAILS,
+  GET_CHARACTER,
+  GET_PLANET,
+  GET_STARSHIP,
+  GET_VIHECLE,
+  setFilms,
+  setFilmsDetails,
+  setCharacter,
+  setPlanet,
+  setStarship,
+  setVehicle,
+} from '../constants';
 
 const initialState = {
   films: [],
@@ -18,6 +27,7 @@ const initialState = {
   character: null,
   planet: null,
   starship: null,
+  vehicle: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -52,35 +62,16 @@ export const reducer = (state = initialState, action) => {
         starship: action.payload,
       };
 
+    case GET_VIHECLE:
+      return {
+        ...state,
+        vehicle: action.payload,
+      };
+
     default:
       return state;
   }
 };
-
-const setFilms = payload => ({
-  type: GET_FILMS,
-  payload,
-});
-
-const setFilmsDetails = payload => ({
-  type: GET_FILM_DETAILS,
-  payload,
-});
-
-const setCharacter = payload => ({
-  type: GET_CHARACTER,
-  payload,
-});
-
-const setPlanet = payload => ({
-  type: GET_PLANET,
-  payload,
-});
-
-const setStarship = payload => ({
-  type: GET_STARSHIP,
-  payload,
-});
 
 export const getFilmsThunk = () => async(dispatch) => {
   const data = await getFilms();
@@ -108,6 +99,12 @@ export const getPlanetThunk = planetId => async(dispatch) => {
 
 export const getStarshipThunk = starshipId => async(dispatch) => {
   const data = await getStarship(starshipId);
-console.log(data);
+
   dispatch(setStarship(data));
+};
+
+export const getVehicleThunk = vehicleId => async(dispatch) => {
+  const data = await getVehicle(vehicleId);
+
+  dispatch(setVehicle(data));
 };
