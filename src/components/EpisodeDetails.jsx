@@ -11,6 +11,7 @@ import {
   planetUrlLength,
   starshipsUrlLength,
   vehicleUrlLength,
+  speciesUrlLength,
 } from '../constants';
 
 const EpisodeDetails = (props) => {
@@ -97,9 +98,15 @@ const EpisodeDetails = (props) => {
           </ul>
           <ul className="content__item">
             <strong>Species:</strong>
-            {details.species.map(specie => (
-              <li key={specie}>{specie}</li>
-            ))}
+            {details.species.map((species) => {
+              const speciesId = species.slice(speciesUrlLength, -1);
+
+              return (
+                <NavLink to={`/species/${speciesId}`} key={species}>
+                  <li>{species}</li>
+                </NavLink>
+              );
+            })}
           </ul>
 
         </div>

@@ -8,6 +8,7 @@ import Character from './components/Character';
 import Planet from './components/Planet';
 import Starship from './components/Starship';
 import Vehicle from './components/Vehicle';
+import Species from './components/Species';
 
 const App = () => (
   <div className="app-wrapper">
@@ -17,6 +18,7 @@ const App = () => (
     <Route path="/planets/:planetId" component={Planet} />
     <Route path="/starships/:starshipId" component={Starship} />
     <Route path="/vehicles/:vehicleId" component={Vehicle} />
+    <Route path="/species/:speciesId" component={Species} />
   </div>
 );
 

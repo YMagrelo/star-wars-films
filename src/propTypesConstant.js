@@ -111,3 +111,21 @@ export const vehiclePropType = PropTypes.shape({
   edited: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 });
+
+export const speciesPropType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  classification: PropTypes.string.isRequired,
+  designation: PropTypes.string.isRequired,
+  average_height: PropTypes.string.isRequired,
+  skin_colors: PropTypes.string.isRequired,
+  hair_colors: PropTypes.string.isRequired,
+  eye_colors: PropTypes.string.isRequired,
+  average_lifespan: PropTypes.string.isRequired,
+  homeworld: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  people: PropTypes.arrayOf(PropTypes.string).isRequired,
+  films: PropTypes.arrayOf(PropTypes.string).isRequired,
+  created: PropTypes.string.isRequired,
+  edited: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+});

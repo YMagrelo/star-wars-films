@@ -5,6 +5,7 @@ import {
   getPlanet,
   getStarship,
   getVehicle,
+  getSpecies,
 } from '../api';
 import {
   GET_FILMS,
@@ -19,6 +20,8 @@ import {
   setPlanet,
   setStarship,
   setVehicle,
+  GET_SPECIES,
+  setSpecies,
 } from '../constants';
 
 const initialState = {
@@ -28,6 +31,7 @@ const initialState = {
   planet: null,
   starship: null,
   vehicle: null,
+  species: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -66,6 +70,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         vehicle: action.payload,
+      };
+
+    case GET_SPECIES:
+      return {
+        ...state,
+        species: action.payload,
       };
 
     default:
@@ -107,4 +117,10 @@ export const getVehicleThunk = vehicleId => async(dispatch) => {
   const data = await getVehicle(vehicleId);
 
   dispatch(setVehicle(data));
+};
+
+export const getSpeciesThunk = speciesId => async(dispatch) => {
+  const data = await getSpecies(speciesId);
+console.log(data);
+  dispatch(setSpecies(data));
 };

@@ -21,3 +21,8 @@ export const getVehicle = vehicleId => fetch(
   `${BASE_URL}vehicles/${vehicleId}`,
 )
   .then(response => response.json());
+
+export const getSpecies = speciesId => fetch(
+  `${BASE_URL}species/${speciesId}`,
+)
+  .then(response => response.json());

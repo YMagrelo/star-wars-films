@@ -7,6 +7,7 @@ export const GET_CHARACTER = 'GET_CHARACTER';
 export const GET_PLANET = 'GET_PLANET';
 export const GET_STARSHIP = 'GET_STARSHIP';
 export const GET_VIHECLE = 'GET_VEHICLE';
+export const GET_SPECIES = 'GET_SPECIES';
 
 // action creators
 export const setFilms = payload => ({
@@ -33,9 +34,14 @@ export const setVehicle = payload => ({
   type: GET_VIHECLE,
   payload,
 });
+export const setSpecies = payload => ({
+  type: GET_SPECIES,
+  payload,
+});
 
 export const charUrlLength = 28;
 export const planetUrlLength = 29;
 export const starshipsUrlLength = 31;
 export const filmsUrlLength = 27;
 export const vehicleUrlLength = 30;
+export const speciesUrlLength = 29;
