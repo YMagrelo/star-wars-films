@@ -12,5 +12,5 @@ export const getCharacter = charId => fetch(`${BASE_URL}people/${charId}`)
 export const getPlanet = planetId => fetch(`${BASE_URL}planets/${planetId}`)
   .then(response => response.json());
 
-export const getStarship = shipId => fetch(`${BASE_URL}starships/${shipId}`)
+export const getStarship = starshipId => fetch(`${BASE_URL}starships/${starshipId}`)
   .then(response => response.json());

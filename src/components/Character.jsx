@@ -5,6 +5,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { getCharacterThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
 import { characterPropType } from '../propTypesConstant';
+import { filmsUrlLength } from '../constants';
 
 const Character = (props) => {
   const { character, getCharacter } = props;
@@ -63,11 +64,11 @@ const Character = (props) => {
           <ul className="content__item">
             <strong>Films:</strong>
             {character.films.map((film) => {
-              const filmId = film.slice(-2, -1);
+              const filmId = film.slice(filmsUrlLength, -1);
 
               return (
-                <NavLink to={`/films/${filmId}`}>
-                  <li key={film}>{film}</li>
+                <NavLink to={`/films/${filmId}`} key={film}>
+                  <li>{film}</li>
                 </NavLink>
               );
             })}
@@ -119,5 +120,9 @@ Character.propTypes = {
       charId: PropTypes.string,
     }).isRequired,
   }).isRequired,
-  character: characterPropType.isRequired,
+  character: characterPropType,
+};
+
+Character.defaultProps = {
+  character: PropTypes.object,
 };

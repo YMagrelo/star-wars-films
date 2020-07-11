@@ -66,8 +66,8 @@ const Planet = (props) => {
               const charId = resident.slice(-2, -1);
 
               return (
-                <NavLink to={`/people/${charId}`}>
-                  <li key={resident}>{resident}</li>
+                <NavLink to={`/people/${charId}`} key={resident}>
+                  <li>{resident}</li>
                 </NavLink>
               );
             })}
@@ -78,8 +78,8 @@ const Planet = (props) => {
               const filmId = film.slice(-2, -1);
 
               return (
-                <NavLink to={`/films/${filmId}`}>
-                  <li key={film}>{film}</li>
+                <NavLink to={`/films/${filmId}`} key={film}>
+                  <li>{film}</li>
                 </NavLink>
               );
             })}
@@ -113,5 +113,9 @@ Planet.propTypes = {
       planetId: PropTypes.string,
     }).isRequired,
   }).isRequired,
-  planet: planetPropType.isRequired,
+  planet: planetPropType,
+};
+
+Planet.defaultProps = {
+  planet: PropTypes.object,
 };

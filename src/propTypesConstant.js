@@ -19,6 +19,23 @@ export const filmsPropType = PropTypes.arrayOf(
   }).isRequired,
 );
 
+export const filmDetailsPropTypes = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  episode_id: PropTypes.number.isRequired,
+  opening_crawl: PropTypes.string.isRequired,
+  director: PropTypes.string.isRequired,
+  producer: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired,
+  characters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  planets: PropTypes.arrayOf(PropTypes.string).isRequired,
+  starships: PropTypes.arrayOf(PropTypes.string).isRequired,
+  vehicles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  species: PropTypes.arrayOf(PropTypes.string).isRequired,
+  created: PropTypes.string.isRequired,
+  edited: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+});
+
 export const characterPropType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
@@ -49,6 +66,27 @@ export const planetPropType = PropTypes.shape({
   surface_water: PropTypes.string.isRequired,
   population: PropTypes.string.isRequired,
   residents: PropTypes.arrayOf(PropTypes.string).isRequired,
+  films: PropTypes.arrayOf(PropTypes.string).isRequired,
+  created: PropTypes.string.isRequired,
+  edited: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+});
+
+export const starshipsPropType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  model: PropTypes.string.isRequired,
+  manufacturer: PropTypes.string.isRequired,
+  cost_in_credits: PropTypes.string.isRequired,
+  length: PropTypes.string.isRequired,
+  max_atmosphering_speed: PropTypes.string.isRequired,
+  crew: PropTypes.string.isRequired,
+  passengers: PropTypes.string.isRequired,
+  cargo_capacity: PropTypes.string.isRequired,
+  consumables: PropTypes.string.isRequired,
+  hyperdrive_rating: PropTypes.string.isRequired,
+  MGLT: PropTypes.string.isRequired,
+  starship_class: PropTypes.string.isRequired,
+  pilots: PropTypes.arrayOf(PropTypes.string).isRequired,
   films: PropTypes.arrayOf(PropTypes.string).isRequired,
   created: PropTypes.string.isRequired,
   edited: PropTypes.string.isRequired,

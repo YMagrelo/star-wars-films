@@ -17,7 +17,7 @@ const initialState = {
   filmDetails: null,
   character: null,
   planet: null,
-  starship: null;
+  starship: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -46,7 +46,7 @@ export const reducer = (state = initialState, action) => {
         planet: action.payload,
       };
 
-      case GET_STARSHIP:
+    case GET_STARSHIP:
       return {
         ...state,
         starship: action.payload,
@@ -106,8 +106,8 @@ export const getPlanetThunk = planetId => async(dispatch) => {
   dispatch(setPlanet(data));
 };
 
-export const getStarshipThunk = shiptId => async(dispatch) => {
-  const data = await getStarship(shipId);
-
+export const getStarshipThunk = starshipId => async(dispatch) => {
+  const data = await getStarship(starshipId);
+console.log(data);
   dispatch(setStarship(data));
 };
