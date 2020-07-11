@@ -121,6 +121,6 @@ export const getVehicleThunk = vehicleId => async(dispatch) => {
 
 export const getSpeciesThunk = speciesId => async(dispatch) => {
   const data = await getSpecies(speciesId);
-console.log(data);
+
   dispatch(setSpecies(data));
 };

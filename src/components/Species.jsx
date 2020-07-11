@@ -5,7 +5,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { getSpeciesThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
 import { speciesPropType } from '../propTypesConstant';
-import { charUrlLength, filmsUrlLength } from '../constants';
+import { charUrlLength, filmsUrlLength, speciesUrlLength } from '../constants';
 
 const Species = (props) => {
   const { species, getSpecies } = props;
@@ -18,7 +18,7 @@ const Species = (props) => {
   return (
     <div className="details">
       <NavLink to="/"><span>Home</span></NavLink>
-      <h1 className="details__heading">Starship details</h1>
+      <h1 className="details__heading">Species details</h1>
       {!species && <Preloader />}
       {species && (
         <div className="details__content content">
@@ -59,7 +59,13 @@ const Species = (props) => {
           <p className="content__item">
             <strong>Homeworld: </strong>
             {' '}
-            {species.homeworld}
+            {species.homeworld && (
+              <NavLink
+                to={`/planets/${species.homeworld.slice(speciesUrlLength, -1)}`}
+              >
+                {species.homeworld}
+              </NavLink>
+            )}
           </p>
           <p className="content__item">
             <strong>Language: </strong>

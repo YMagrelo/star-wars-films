@@ -5,7 +5,13 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { getCharacterThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
 import { characterPropType } from '../propTypesConstant';
-import { filmsUrlLength } from '../constants';
+import {
+  filmsUrlLength,
+  charUrlLength,
+  speciesUrlLength,
+  vehicleUrlLength,
+  starshipsUrlLength,
+} from '../constants';
 
 const Character = (props) => {
   const { character, getCharacter } = props;
@@ -59,7 +65,13 @@ const Character = (props) => {
           <p className="content__item">
             <strong>Home world: </strong>
             {' '}
-            {character.homeworld}
+            {character.homeworld && (
+              <NavLink
+                to={`/planets${character.homeworld.slice(charUrlLength, -1)}`}
+              >
+                {character.homeworld}
+              </NavLink>
+            )}
           </p>
           <ul className="content__item">
             <strong>Films:</strong>
@@ -75,21 +87,39 @@ const Character = (props) => {
           </ul>
           <ul className="content__item">
             <strong>Species:</strong>
-            {character.species.map(specie => (
-              <li key={specie}>{specie}</li>
-            ))}
+            {character.species.map((species) => {
+              const speciesId = species.slice(speciesUrlLength, -1);
+
+              return (
+                <NavLink to={`/species/${speciesId}`} key={species}>
+                  <li>{species}</li>
+                </NavLink>
+              );
+            })}
           </ul>
           <ul className="content__item">
             <strong>Vehicles:</strong>
-            {character.vehicles.map(vehicle => (
-              <li key={vehicle}>{vehicle}</li>
-            ))}
+            {character.vehicles.map((vehicle) => {
+              const vehicleId = vehicle.slice(vehicleUrlLength, -1);
+
+              return (
+                <NavLink to={`/vehicles/${vehicleId}`} key={vehicle}>
+                  <li>{vehicle}</li>
+                </NavLink>
+              );
+            })}
           </ul>
           <ul className="content__item">
             <strong>Starships:</strong>
-            {character.starships.map(starship => (
-              <li key={starship}>{starship}</li>
-            ))}
+            {character.starships.map((ship) => {
+              const shipId = ship.slice(starshipsUrlLength, -1);
+
+              return (
+                <NavLink to={`/starships/${shipId}`} key={ship}>
+                  <li>{ship}</li>
+                </NavLink>
+              );
+            })}
           </ul>
 
         </div>

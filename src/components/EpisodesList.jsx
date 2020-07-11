@@ -15,12 +15,14 @@ const EpisodesList = (props) => {
     getFilms();
   }, []);
 
+  const sortedFilms = films.sort((a, b) => ((a.title > b.title) ? 1 : -1));
+
   return (
     <div className="episodes">
       <h1 className="episodes__heading">The list of the star wars episodes</h1>
       {!films.length && <Preloader />}
       <ul className="episodes__list">
-        {films.map((film) => {
+        {sortedFilms.map((film) => {
           const filmId = film.url.slice(filmsUrlLength, -1);
 
           return (

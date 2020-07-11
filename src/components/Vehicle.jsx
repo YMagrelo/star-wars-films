@@ -18,7 +18,7 @@ const Vehicle = (props) => {
   return (
     <div className="details">
       <NavLink to="/"><span>Home</span></NavLink>
-      <h1 className="details__heading">Starship details</h1>
+      <h1 className="details__heading">Vehicle details</h1>
       {!vehicle && <Preloader />}
       {vehicle && (
         <div className="details__content content">

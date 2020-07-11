@@ -13,7 +13,7 @@ export const getPlanet = planetId => fetch(`${BASE_URL}planets/${planetId}`)
   .then(response => response.json());
 
 export const getStarship = shipId => fetch(
-  `${BASE_URL}starships/${shipId}`, { mode: 'cors' },
+  `${BASE_URL}starships/${shipId}`,
 )
   .then(response => response.json());
 
@@ -23,6 +23,6 @@ export const getVehicle = vehicleId => fetch(
   .then(response => response.json());
 
 export const getSpecies = speciesId => fetch(
-  `${BASE_URL}species/${speciesId}`,
+  `${BASE_URL}species/${speciesId}`, { mode: 'cors' },
 )
   .then(response => response.json());
