@@ -6,6 +6,7 @@ import {
   getStarship,
   getVehicle,
   getSpecies,
+  getSearchFilm,
 } from '../api';
 import {
   GET_FILMS,
@@ -22,10 +23,13 @@ import {
   setVehicle,
   GET_SPECIES,
   setSpecies,
+  GET_SEARCH_FILM,
+  setSearchFilm,
 } from '../constants';
 
 const initialState = {
   films: [],
+  searchFilm: [],
   filmDetails: null,
   character: null,
   planet: null,
@@ -40,6 +44,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         films: action.payload,
+      };
+
+    case GET_SEARCH_FILM:
+      return {
+        ...state,
+        searchFilm: action.payload,
       };
 
     case GET_FILM_DETAILS:
@@ -123,4 +133,11 @@ export const getSpeciesThunk = speciesId => async(dispatch) => {
   const data = await getSpecies(speciesId);
 
   dispatch(setSpecies(data));
+};
+
+export const getSearchFilmThunk = query => async(dispatch) => {
+  const data = await getSearchFilm(query);
+
+  console.log(data);
+  dispatch(setSearchFilm(data));
 };

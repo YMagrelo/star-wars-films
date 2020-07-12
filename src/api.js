@@ -26,3 +26,8 @@ export const getSpecies = speciesId => fetch(
   `${BASE_URL}species/${speciesId}`, { mode: 'cors' },
 )
   .then(response => response.json());
+
+export const getSearchFilm = query => fetch(
+  `${BASE_URL}films/?search=${query}`,
+)
+  .then(response => response.json());

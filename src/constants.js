@@ -8,6 +8,7 @@ export const GET_PLANET = 'GET_PLANET';
 export const GET_STARSHIP = 'GET_STARSHIP';
 export const GET_VIHECLE = 'GET_VEHICLE';
 export const GET_SPECIES = 'GET_SPECIES';
+export const GET_SEARCH_FILM = 'GET_SEARCH_FILM';
 
 // action creators
 export const setFilms = payload => ({
@@ -36,6 +37,10 @@ export const setVehicle = payload => ({
 });
 export const setSpecies = payload => ({
   type: GET_SPECIES,
+  payload,
+});
+export const setSearchFilm = payload => ({
+  type: GET_SEARCH_FILM,
   payload,
 });
 
