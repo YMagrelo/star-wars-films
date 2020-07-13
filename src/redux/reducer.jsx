@@ -138,6 +138,5 @@ export const getSpeciesThunk = speciesId => async(dispatch) => {
 export const getSearchFilmThunk = query => async(dispatch) => {
   const data = await getSearchFilm(query);
 
-  console.log(data);
-  dispatch(setSearchFilm(data));
+  dispatch(setSearchFilm(data.results));
 };

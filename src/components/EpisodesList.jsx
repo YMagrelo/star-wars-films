@@ -1,21 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './EpisodesList.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getFilmsThunk } from '../redux/reducer';
+import { getFilmsThunk, getSearchFilmThunk } from '../redux/reducer';
 import { Preloader } from './common/Preloader';
 import { filmsPropType } from '../propTypesConstant';
 import { filmsUrlLength } from '../constants';
 
 const EpisodesList = (props) => {
-  const { films, getFilms } = props;
+  const { films, getFilms, getSearchFilm, searchFilm } = props;
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     getFilms();
   }, []);
 
-  const sortedFilms = films.sort((a, b) => ((a.title > b.title) ? 1 : -1));
+  const handleInput = (event) => {
+    const { value } = event.target;
+
+    setQuery(value);
+  };
+
+  useEffect(() => {
+    getSearchFilm(query);
+  }, [query]);
+
+  const sortedFilms = searchFilm.sort((a, b) => ((a.title > b.title) ? 1 : -1));
 
   return (
     <div className="episodes">
@@ -36,16 +47,25 @@ const EpisodesList = (props) => {
           );
         })}
       </ul>
+      <input
+        type="text"
+        placeholder="Search by film title"
+        className="episodes__input"
+        value={query}
+        onChange={handleInput}
+      />
     </div>
   );
 };
 
 const mapStateToProps = state => ({
   films: state.films,
+  searchFilm: state.searchFilm,
 });
 
 const mapDispatchToProps = dispatch => ({
   getFilms: () => dispatch(getFilmsThunk()),
+  getSearchFilm: query => dispatch(getSearchFilmThunk(query)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EpisodesList);
@@ -53,4 +73,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(EpisodesList);
 EpisodesList.propTypes = {
   getFilms: PropTypes.func.isRequired,
   films: filmsPropType.isRequired,
+  getSearchFilm: PropTypes.func.isRequired,
+  searchFilm: filmsPropType.isRequired,
 };
