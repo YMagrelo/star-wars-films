@@ -1,6 +1,6 @@
 # Star Wars films App
 
-[Demo link](https://github.com/YMagrelo/star-wars-films)
+[Demo link](https://ymagrelo.github.io/star-wars-films/)
 
 1. npm i
 2. npm start
